@@ -1,0 +1,7 @@
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.csproj.AssemblyReference.cache
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.Form1.resources
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.csproj.GenerateResource.cache
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.AssemblyInfoInputs.cache
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.AssemblyInfo.cs
+C:\Users\Emre Gurer\source\repos\WinFormsApp34\WinFormsApp34\obj\Debug\net10.0-windows\WinFormsApp34.csproj.CoreCompileInputs.cache
