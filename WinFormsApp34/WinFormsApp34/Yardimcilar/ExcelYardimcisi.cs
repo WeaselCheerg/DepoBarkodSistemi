@@ -29,7 +29,7 @@ namespace WinFormsApp34.Yardimcilar
                 sayfa.Cell(satir, 3).Value = urun.Miktar;
                 sayfa.Cell(satir, 4).Value = urun.Birim;
                 sayfa.Cell(satir, 5).Value = urun.RafKonumu ?? "";
-                sayfa.Cell(satir, 6).Value = urun.Fiyat.HasValue ? urun.Fiyat.Value : 0;
+                sayfa.Cell(satir, 6).Value = urun.Fiyat;
                 sayfa.Cell(satir, 7).Value = urun.SonGuncellemeTarihi;
                 satir++;
             }

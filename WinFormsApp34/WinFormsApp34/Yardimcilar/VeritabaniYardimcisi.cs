@@ -12,11 +12,22 @@ namespace WinFormsApp34.Yardimcilar
         private readonly string _baglantiMetni =
             @"Server=(localdb)\MSSQLLocalDB;Database=DepoYonetimDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
+        // C#
         private SqlConnection BaglantiAc()
         {
             var baglanti = new SqlConnection(_baglantiMetni);
-            baglanti.Open();
-            return baglanti;
+            try
+            {
+                baglanti.Open();
+                return baglanti;
+            }
+            catch (SqlException ex)
+            {
+                // Daha detaylı günlükleme ekleyin (EventLog / dosya)
+                MessageBox.Show("Veritabanına bağlanılamadı. Lütfen LocalDB örneğinin çalıştığını ve bağlantı dizesinin doğru olduğunu kontrol edin.\n\nHata: " + ex.Message,
+                                "Veritabanı Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
 
         public bool BarkodVarMi(string barkod)
@@ -118,9 +129,12 @@ namespace WinFormsApp34.Yardimcilar
                 Barkod = okuyucu.GetString(okuyucu.GetOrdinal("Barkod")),
                 Miktar = okuyucu.GetInt32(okuyucu.GetOrdinal("Miktar")),
                 Birim = okuyucu.GetString(okuyucu.GetOrdinal("Birim")),
-                RafKonumu = okuyucu.IsDBNull(okuyucu.GetOrdinal("RafKonumu")) ? null : okuyucu.GetString(okuyucu.GetOrdinal("RafKonumu")),
-                Fiyat = okuyucu.IsDBNull(okuyucu.GetOrdinal("Fiyat")) ? (decimal?)null : okuyucu.GetDecimal(okuyucu.GetOrdinal("Fiyat")),
-                QRKodYolu = okuyucu.IsDBNull(okuyucu.GetOrdinal("QRKodYolu")) ? null : okuyucu.GetString(okuyucu.GetOrdinal("QRKodYolu")),
+                // Eğer veritabanında RafKonumu boşsa, null yerine boş metin ("") ata (Yeşil uyarıyı çözer)
+                RafKonumu = okuyucu.IsDBNull(okuyucu.GetOrdinal("RafKonumu")) ? "" : okuyucu.GetString(okuyucu.GetOrdinal("RafKonumu")),
+                // Eğer veritabanında Fiyat boşsa, null yerine 0 ata (KIRMIZI HATAYI ÇÖZER)
+                Fiyat = okuyucu.IsDBNull(okuyucu.GetOrdinal("Fiyat")) ? 0m : okuyucu.GetDecimal(okuyucu.GetOrdinal("Fiyat")),
+                // Eğer veritabanında QRKodYolu boşsa, null yerine boş metin ("") ata (Yeşil uyarıyı çözer)
+                QRKodYolu = okuyucu.IsDBNull(okuyucu.GetOrdinal("QRKodYolu")) ? "" : okuyucu.GetString(okuyucu.GetOrdinal("QRKodYolu")),
                 OlusturmaTarihi = okuyucu.GetDateTime(okuyucu.GetOrdinal("OlusturmaTarihi")),
                 SonGuncellemeTarihi = okuyucu.GetDateTime(okuyucu.GetOrdinal("SonGuncellemeTarihi"))
             };

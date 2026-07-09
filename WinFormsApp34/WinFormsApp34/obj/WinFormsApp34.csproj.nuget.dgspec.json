@@ -53,6 +53,10 @@
           "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows",
           "dependencies": {
+            "AForge.Video.DirectShow": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "ClosedXML": {
               "target": "Package",
               "version": "[0.105.0, )"
@@ -64,6 +68,14 @@
             "QRCoder": {
               "target": "Package",
               "version": "[1.8.0, )"
+            },
+            "ZXing.Net": {
+              "target": "Package",
+              "version": "[0.16.11, )"
+            },
+            "ZXing.Net.Bindings.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[0.16.14, )"
             }
           },
           "imports": [

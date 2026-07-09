@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "akoSWOU3S9E=",
+  "dgSpecHash": "jyTo8u58Xnk=",
   "success": true,
   "projectFilePath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Emre Gurer\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
+    "C:\\Users\\Emre Gurer\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",
+    "C:\\Users\\Emre Gurer\\.nuget\\packages\\aforge.video.directshow\\2.2.5\\aforge.video.directshow.2.2.5.nupkg.sha512",
     "C:\\Users\\Emre Gurer\\.nuget\\packages\\closedxml\\0.105.0\\closedxml.0.105.0.nupkg.sha512",
     "C:\\Users\\Emre Gurer\\.nuget\\packages\\closedxml.parser\\2.0.0\\closedxml.parser.2.0.0.nupkg.sha512",
     "C:\\Users\\Emre Gurer\\.nuget\\packages\\documentformat.openxml\\3.1.1\\documentformat.openxml.3.1.1.nupkg.sha512",
@@ -30,7 +33,46 @@
     "C:\\Users\\Emre Gurer\\.nuget\\packages\\qrcoder\\1.8.0\\qrcoder.1.8.0.nupkg.sha512",
     "C:\\Users\\Emre Gurer\\.nuget\\packages\\rbush.signed\\4.0.0\\rbush.signed.4.0.0.nupkg.sha512",
     "C:\\Users\\Emre Gurer\\.nuget\\packages\\sixlabors.fonts\\1.0.0\\sixlabors.fonts.1.0.0.nupkg.sha512",
-    "C:\\Users\\Emre Gurer\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.16.0\\system.identitymodel.tokens.jwt.8.16.0.nupkg.sha512"
+    "C:\\Users\\Emre Gurer\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.16.0\\system.identitymodel.tokens.jwt.8.16.0.nupkg.sha512",
+    "C:\\Users\\Emre Gurer\\.nuget\\packages\\zxing.net\\0.16.11\\zxing.net.0.16.11.nupkg.sha512",
+    "C:\\Users\\Emre Gurer\\.nuget\\packages\\zxing.net.bindings.windows.compatibility\\0.16.14\\zxing.net.bindings.windows.compatibility.0.16.14.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "'AForge 2.2.5' paketi, proje hedef çerçevesi 'net10.0-windows7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "projectPath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
+      "libraryId": "AForge",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "'AForge.Video 2.2.5' paketi, proje hedef çerçevesi 'net10.0-windows7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "projectPath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
+      "libraryId": "AForge.Video",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "'AForge.Video.DirectShow 2.2.5' paketi, proje hedef çerçevesi 'net10.0-windows7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "projectPath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Emre Gurer\\source\\repos\\WinFormsApp34\\WinFormsApp34\\WinFormsApp34.csproj",
+      "libraryId": "AForge.Video.DirectShow",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    }
+  ]
 }

@@ -1,9 +1,16 @@
+using AForge.Video;
+using AForge.Video.DirectShow;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using WinFormsApp34.Modeller;
 using WinFormsApp34.Yardimcilar;
+using ZXing;
+using ZXing.QrCode;
+using ZXing.Windows.Compatibility;
+using System.Drawing.Drawing2D;
+
 
 namespace WinFormsApp34
 {
@@ -21,6 +28,11 @@ namespace WinFormsApp34
         private Button btnYenile;
         private PictureBox pbQRKod;
 
+        private FilterInfoCollection kameralar; // Bilgisayardaki kameraların listesi
+        private VideoCaptureDevice kamera;      // Kullanacağımız aktif kamera
+        private ComboBox cmbKameraSec;          // Arayüzde kamera seçeceğimiz liste
+        private Button btnKameraAc;             // Kamerayı Başlat/Durdur butonu
+
         private Urun _seciliUrun;
 
         public Form1()
@@ -28,8 +40,9 @@ namespace WinFormsApp34
             InitializeComponent();
             ArayuzuOlustur();
             ListeyiYenile();
+           
         }
-
+       
         private void ArayuzuOlustur()
         {
             this.Text = "Depo ve Stok Takip Sistemi - Barkod/QR";
@@ -295,5 +308,71 @@ namespace WinFormsApp34
 
             return form.ShowDialog() == DialogResult.OK ? txt.Text : null;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        // Kamerayı Aç/Kapat Butonu İşlemi
+        private void BtnKameraAc_Click(object sender, EventArgs e)
+        {
+            if (kamera != null && kamera.IsRunning)
+            {
+                // Kamera açıksa kapat
+                kamera.SignalToStop();
+                kamera = null;
+                btnKameraAc.Text = "Kamerayı Aç";
+                pbQRKod.Image = null; // Ekranı temizle
+            }
+            else
+            {
+                // Kamera kapalıysa seçili kamerayı başlat
+                if (cmbKameraSec.SelectedIndex >= 0)
+                {
+                    kamera = new VideoCaptureDevice(kameralar[cmbKameraSec.SelectedIndex].MonikerString);
+                    kamera.NewFrame += Kamera_NewFrame; // Görüntü geldikçe tetiklenecek olay
+                    kamera.Start();
+                    btnKameraAc.Text = "Kamerayı Kapat";
+                }
+            }
+        }
+
+        // Kameradan Anlık Görüntü (Kare) Geldiğinde Çalışacak Metot
+        private void Kamera_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            using var goruntu = (Bitmap)eventArgs.Frame.Clone();
+            pbQRKod.Image = (Bitmap)goruntu.Clone(); // Görüntüyü ekrana yansıt
+
+            // Ekranda barkod veya QR var mı diye tarıyoruz
+            BarcodeReader okuyucu = new BarcodeReader();
+            var sonuc = okuyucu.Decode(goruntu);
+
+            if (sonuc != null) // Eğer bir barkod okunursa
+            {
+                // Arka plan işleminden ana forma veri yazdırmak için Invoke kullanıyoruz
+                txtBarkod.Invoke(new MethodInvoker(delegate ()
+                {
+                    if (txtBarkod.Text != sonuc.Text) // Aynı barkodu art arda yazmaması için ufak bir kontrol
+                    {
+                        txtBarkod.Text = sonuc.Text;
+                    }
+                }));
+            }
+        }
+
+        // Form Kapanırken Kamerayı Güvenli Şekilde Kapatma İşlemi
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (kamera != null && kamera.IsRunning)
+            {
+                kamera.SignalToStop();
+            }
+        }
+
+
+
+
+
     }
 }
